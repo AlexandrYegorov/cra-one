@@ -1,52 +1,26 @@
-Skip to content
-Search or jump to…
+import React, { useState } from 'react';
+function State(props) {
+    const [count, setCount] = useState(3);
 
-Pull requests
-Issues
-Marketplace
-Explore
 
-@AlexandrYegorov
-bogutski
-/
-fe1
-1
-01
-Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights
-fe1/src/Content.jsx
-@bogutski bogutski props callback
-1b946be 43 seconds ago
-32 lines (24 sloc)  644 Bytes
+    //let count = 3;
 
-import React from 'react';
-
-function Content(props) {
-
-    let name = 'Initial';
-
-    const clickButtonHandler = (value) => {
-        props.bc(name + value);
-        console.log('Clicked! ' + name);
+    const countChangePlusHandler = () =>{
+        setCount(count + 1);
+        console.log('change + ')
     };
-
-    const inputHandler = (e) => {
-        name = e.target.value;
-        console.log(e.target.value);
+    const countChangeMinusHandler = () =>{
+        setCount(count - 1);
+        console.log('change -')
     };
 
     return (
-        <main>
-            <div className="container">
-                <h1>First app</h1>
-                {name}
-                <input type="text" onChange={inputHandler} />
-
-                <button onClick={() => clickButtonHandler(1)}>Add one</button>
-                <button onClick={() => clickButtonHandler(2)}>Add two</button>
-
+            <div>
+                <button onClick={countChangeMinusHandler}>-</button>
+                {count}
+                <button onClick={countChangePlusHandler}>+</button>
             </div>
-        </main>
     );
 }
 
-export default Content;
+export default State;
